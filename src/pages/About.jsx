@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import SectionOne from "../Components/sectionOne";
-import SectionTwo from "../Components/sectionTwo";
+import SectionOne from "../Components/SectionOne";
+import SectionTwo from "../Components/SectionTwo";
 
 export default function About() {
   return (
