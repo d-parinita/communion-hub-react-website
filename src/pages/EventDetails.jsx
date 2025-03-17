@@ -35,7 +35,6 @@ export default function EventDetails() {
   return (
     <>
     <div className="max-w-4xl mx-auto p-6 mt-28 space-y-6">
-      {/* Panoramic Image */}
       <div className="w-full h-64 md:h-96 overflow-hidden rounded-2xl shadow-lg">
         <img
           src={eventData?.image}
@@ -44,7 +43,6 @@ export default function EventDetails() {
         />
       </div>
 
-      {/* Event Details */}
       <div className="space-y-4">
         <h1 className="text-3xl md:text-4xl font-bold">{eventData?.title}</h1>
 

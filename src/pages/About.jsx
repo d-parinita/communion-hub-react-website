@@ -5,7 +5,6 @@ import SectionTwo from "../Components/sectionTwo";
 export default function About() {
   return (
     <div className="bg-white max-w-7xl mb-16 mx-auto text-black min-h-screen">
-      {/* Hero Section */}
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -17,8 +16,6 @@ export default function About() {
           Building bridges between communities by fostering meaningful connections.
         </p>
       </motion.div>
-
-      {/* Sections */}
       <SectionOne />
       <SectionTwo />
       <SectionOne />

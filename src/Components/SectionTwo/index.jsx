@@ -9,7 +9,6 @@ export default function SectionTwo() {
       viewport={{ once: true }}
       className="container mx-auto px-4 sm:px-8 py-5 grid grid-cols-1 md:grid-cols-2 gap-6 items-center text-center md:text-left"
     >
-      {/* Text First on Mobile, Second on Desktop */}
       <div className="order-1 md:order-2">
         <h2 className="text-3xl sm:text-4xl font-semibold text-blue-600">
           Empowering Conversations
@@ -20,7 +19,6 @@ export default function SectionTwo() {
         </p>
       </div>
 
-      {/* Image Second on Mobile, First on Desktop */}
       <motion.img
         src="https://images.pexels.com/photos/3856033/pexels-photo-3856033.jpeg?auto=compress&cs=tinysrgb&w=600"
         alt="Community engagement"

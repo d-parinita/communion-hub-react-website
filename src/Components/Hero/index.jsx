@@ -6,7 +6,6 @@ export default function Hero() {
   return (
   <section className="bg-gray-50 min-h-screen flex items-center px-4">
     <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-10 items-center">
-      {/* Left Side - Text Content */}
       <div className="md:w-1/2 text-center md:text-left">
         <h1 className="text-6xl font-bold text-blue-900">
           Connecting People Across Faiths & Interests
@@ -24,7 +23,6 @@ export default function Hero() {
         </Link>      
       </div>
 
-      {/* Right Side - Animated Images */}
       <div className="md:w-1/2 flex justify-center mt-10 md:mt-0 relative">
         <motion.img
           src="https://images.pexels.com/photos/3280130/pexels-photo-3280130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -50,6 +48,5 @@ export default function Hero() {
       </div>
     </div>
   </section>
-
   );
 }
