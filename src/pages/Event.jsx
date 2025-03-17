@@ -3,13 +3,16 @@ import EventCard from '../Components/EventCard'
 import { RiFlashlightFill } from "react-icons/ri";
 import EventForm from '../Components/EventForm';
 import { FiPlusCircle } from "react-icons/fi";
-import { deleteFromDb, getEventFromDb, getEventWithFilters } from '../supabase-service';
+import { deleteFromDb, getEventFromDb, getEventWithFilters, isLogedIn } from '../supabase-service';
 import { constVariables } from '../utils/constVariables';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useLoader } from '../context/LoaderContext';
+import { routes } from '../utils/routes';
 
 export default function Event() {
 
+  const { setLoading } = useLoader()
   const navigate = useNavigate()
   const [data, setData] = useState([])
   const [isOpen, setIsOpen] = useState(false)
@@ -17,19 +20,19 @@ export default function Event() {
   const [seletedCategory, setSelectedCategory] = useState(null)
 
   const getEventData = async () => {
-    // setLoading(true)
+    setLoading(true)
     try {
       const { data } = await getEventFromDb(constVariables.TABLES.EVENT);
       setData(data);
     } catch (error) {
       toast.error("Error fetching data");
     } finally {
-      // setLoading(false)
+      setLoading(false)
     }
   };
 
   const getEventByFilters = async (category) => {
-    // setLoading(true)
+    setLoading(true)
     if (seletedCategory == category) {
       getEventData()
       setSelectedCategory(null)
@@ -42,7 +45,7 @@ export default function Event() {
     } catch (error) {
       toast.error("Error fetching data");
     } finally {
-      // setLoading(false)
+      setLoading(false)
     }
   };
 
@@ -52,7 +55,12 @@ export default function Event() {
     return date.toLocaleString("en-US", options);
   };
 
-  const handleEdit = (id) => {
+  const handleEdit = async(id) => {
+    const user = await isLogedIn();
+    if(!user){
+      navigate(routes.SIGNIN)
+      return
+    }
     setEditId(id)
     setIsOpen(true)
   }
@@ -67,7 +75,12 @@ export default function Event() {
   }
 
   const handleDelete = async (id) => {
-    // setLoading(true)
+    const user = await isLogedIn();
+      if(!user){
+        navigate(routes.SIGNIN)
+      return
+    }
+    setLoading(true)
     if (confirm("Are you sure you want to delete this event?")) {
       try {
         await deleteFromDb(constVariables.TABLES.EVENT, id);
@@ -76,13 +89,24 @@ export default function Event() {
       } catch (error) {
         toast.error("Error deleting event");
       } finally {
-        // setLoading(false)
+        setLoading(false)
       }
     }
   }
 
+  const isSignedIn = async () => {
+    try {
+      const user = await isLogedIn();
+      if(!user){
+        navigate(routes.SIGNIN)
+        return
+      }
+      setIsOpen(true)
+    } catch (error) {}
+  } 
+
   const viewEventDetails = (id) => {
-    navigate(`/eventdetails/${id}`)
+    navigate(`${routes.EVENTDETAILS}/${id}`)
   }
 
   useEffect(() => {
@@ -102,7 +126,7 @@ export default function Event() {
           </p>
           <div className='flex items-center justify-center mt-2 sm:mt-6'>
             <button
-              onClick={() => setIsOpen(true)}
+              onClick={isSignedIn}
               className="px-4 py-2 text-white font-medium bg-gray-800 flex justify-center items-center gap-2 rounded-lg hover:bg-gray-700"
             >
               Create Events <FiPlusCircle />
@@ -137,6 +161,7 @@ export default function Event() {
                   edit={() => handleEdit(item?.id)}
                   deleteEvent={() => handleDelete(item?.id)}
                   showDetails={() => viewEventDetails(item?.id)}
+                  showMenu={isLogedIn()}
                 />
               </Fragment>
             ))}

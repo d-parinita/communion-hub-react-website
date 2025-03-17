@@ -45,9 +45,6 @@ export const signOut = async() => {
 export const getUserData = async() => {
     try {
         const { data, error } = await supabase.auth.getUser()
-        if (error) {
-            throw new Error(error.message);
-        }
         return data;
     } catch (error) {
         throw error;
@@ -153,10 +150,15 @@ export const getEventWithFilters = async(table, key, value) => {
             .select("*")
             .eq(key, value)
         if (error) {
-            throw new Error(error.message);
+            throw new Error(error?.message);
         }
         return { data };
     } catch (error) {
         throw new Error(`Error fetching data: ${error.message}`);
     }
 };
+
+export const isLogedIn = async() => {
+    const { data, error } = await supabase.auth.getSession();
+    return data?.session?.user || null;
+}

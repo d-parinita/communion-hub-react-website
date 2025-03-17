@@ -3,8 +3,11 @@ import { RxCross2 } from "react-icons/rx";
 import { addEventData, getEventById, getUserData, updateInDb, uploadFile } from "../../supabase-service";
 import { toast } from "react-toastify";
 import { constVariables } from "../../utils/constVariables";
+import { useLoader } from "../../context/LoaderContext";
 
 export default function EventForm({ close, id, fetchData }) {
+
+  const { setLoading } = useLoader()
 
   const [eventData, setEventData] = useState({
     title: '',
@@ -24,7 +27,7 @@ export default function EventForm({ close, id, fetchData }) {
   }, [id])
 
   const getEvent = async (id) => {
-    // setLoading(true)
+    setLoading(true)
     try {
       const data = await getEventById(id, constVariables.TABLES.EVENT)
       setEventData({
@@ -39,7 +42,7 @@ export default function EventForm({ close, id, fetchData }) {
     } catch (error) {
       toast.error("Error fetching data");
     } finally {
-      //   setLoading(false)
+        setLoading(false)
     }
   }
 
@@ -59,7 +62,7 @@ export default function EventForm({ close, id, fetchData }) {
   }
 
   const handleSubmit = async () => {
-    // setLoading(true)
+    setLoading(true)
     try {
       let finalImageUrl = eventData?.image;
       if (image) {
@@ -69,12 +72,12 @@ export default function EventForm({ close, id, fetchData }) {
     } catch (error) {
       toast.error('Error saving Event: ' + error.message);
     } finally {
-      //   setLoading(false)
+        setLoading(false)
     }
   }
 
   const saveEventData = async (imageUrl) => {
-    // setLoading(true)
+    setLoading(true)
     try {
       const payload = {
         title: eventData?.title,
@@ -94,7 +97,7 @@ export default function EventForm({ close, id, fetchData }) {
         } catch (error) {
           toast.error('Error updating Event');
         } finally {
-          //   setLoading(false)
+            setLoading(false)
         }
       } else {
         try {
@@ -105,7 +108,7 @@ export default function EventForm({ close, id, fetchData }) {
         } catch (error) {
           toast.error('Error adding data');
         } finally {
-          //   setLoading(false)
+            setLoading(false)
         }
       }
       setEventData({
@@ -122,7 +125,7 @@ export default function EventForm({ close, id, fetchData }) {
     } catch (error) {
       toast.error('Error saving Event');
     } finally {
-      //   setLoading(false)
+        setLoading(false)
     }
   }
 
@@ -132,7 +135,7 @@ export default function EventForm({ close, id, fetchData }) {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-20">
+      <div className="fixed inset-0 flex items-center justify-center backdrop-blur-xl bg-opacity-20">
         <div className="bg-white relative mt-20 text-black px-6 py-4 rounded-lg w-100 shadow-lg">
 
           <button

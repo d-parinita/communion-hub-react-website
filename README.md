@@ -1,12 +1,39 @@
-# React + Vite
+# Event Management Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+This is a modern event management web application built using **Vite + React**, with authentication and database powered by **Supabase**. The application allows users to **sign up, log in, create, edit, and delete events**. The UI is designed with **Tailwind CSS**, and reusable components have been implemented for better scalability and maintainability.
 
-Currently, two official plugins are available:
+## Features
+- **User Authentication**: Sign up and log in using Supabase Auth.
+- **Event Management**: Users can create, edit, and delete events.
+- **Reusable Components**: Optimized for scalability and maintainability.
+- **Tailwind CSS**: Clean and responsive UI design.
+- **Fast Development**: Built with **Vite** for a seamless development experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- **Frontend**: React (with Vite)
+- **Authentication & Database**: Supabase
+- **Styling**: Tailwind CSS
 
-## Expanding the ESLint configuration
+## Installation & Setup
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Install Dependencies
+```sh
+npm install  # or yarn install
+```
+
+### Setup Environment Variables
+Create a `.env` file in the root directory and add the following:
+```env
+SUPABASE_URL=your_supabase_url
+SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+### Run the Project
+```sh
+npm run dev  # or yarn dev
+```
+
+## Usage
+- **Sign Up / Log In**: Users can create an account or log in using Supabase Auth.
+- **Manage Events**: Once logged in, users can create, edit, and delete their own events.

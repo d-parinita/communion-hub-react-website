@@ -1,6 +1,8 @@
 import React from "react";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { RiUserCommunityFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
+import { routes } from "../../utils/routes";
 
 export default function Footer() {
   return (
@@ -18,27 +20,27 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-semibold mb-3 text-gray-300">Quick Links</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="text-gray-400 hover:text-white transition">Home</a></li>
-            <li><a href="#" className="text-gray-400 hover:text-white transition">Events</a></li>
-            <li><a href="#" className="text-gray-400 hover:text-white transition">About</a></li>
+            <li><Link to={routes.HOME} className="text-gray-400 hover:text-white transition">Home</Link></li>
+            <li><Link to={routes.EVENT} className="text-gray-400 hover:text-white transition">Events</Link></li>
+            <li><Link to={routes.ABOUT} className="text-gray-400 hover:text-white transition">About</Link></li>
           </ul>
         </div>
 
         <div>
           <h3 className="text-lg font-semibold mb-3 text-gray-300">Follow Us</h3>
           <div className="flex justify-center md:justify-start gap-4">
-            <a href="#" className="text-gray-400 hover:text-white transition text-xl">
+            <Link to="#" className="text-gray-400 hover:text-white transition text-xl">
               <FaFacebookF />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition text-xl">
+            </Link>
+            <Link to="#" className="text-gray-400 hover:text-white transition text-xl">
               <FaTwitter />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition text-xl">
+            </Link>
+            <Link to="#" className="text-gray-400 hover:text-white transition text-xl">
               <FaInstagram />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition text-xl">
+            </Link>
+            <Link to="#" className="text-gray-400 hover:text-white transition text-xl">
               <FaLinkedinIn />
-            </a>
+            </Link>
           </div>
         </div>
 

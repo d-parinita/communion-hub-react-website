@@ -6,10 +6,11 @@ import { FaCircleUser } from "react-icons/fa6";
 import { getUserData, signOut } from '../../supabase-service';
 import { toast } from 'react-toastify';
 import { RiUserCommunityFill } from "react-icons/ri";
+import { routes } from '../../utils/routes';
 
 export default function Navbar() {
 
-  const router = useNavigate()
+  const navigate = useNavigate()
 
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -21,7 +22,7 @@ export default function Navbar() {
     if (data?.error) {
       toast.error('Error in logout')
     }
-    router.navigate('/')
+    navigate(routes.HOME)
   }
 
   const userData = async () => {
@@ -45,16 +46,16 @@ export default function Navbar() {
         <div className="max-w-sm sm:max-w-md md:max-w-7xl mx-auto px-2 sm:px-6">
           <div className="flex justify-between h-18 items-center">
             <div className="flex-shrink-0 text-xl sm:text-2xl font-bold text-sky-700">
-              <Link to="/" className='flex items-center gap-2'><RiUserCommunityFill size={40} />Communion</Link>
+              <Link to={routes.HOME} className='flex items-center gap-2'><RiUserCommunityFill size={40} />Communion</Link>
             </div>
             <div className="hidden md:flex flex-1 justify-center space-x-12">
-              <Link to="/" className="text-gray-900 text-lg font-medium hover:text-gray-700">Home</Link>
-              <Link to="/event" className="text-gray-900 text-lg font-medium hover:text-gray-700">Events</Link>
-              <Link to="/about" className="text-gray-900 text-lg font-medium hover:text-gray-700">About</Link>
+              <Link to={routes.HOME} className="text-gray-900 text-lg font-medium hover:text-gray-700">Home</Link>
+              <Link to={routes.EVENT} className="text-gray-900 text-lg font-medium hover:text-gray-700">Events</Link>
+              <Link to={routes.ABOUT} className="text-gray-900 text-lg font-medium hover:text-gray-700">About</Link>
             </div>
             {!user ? (<>
               <div className="hidden md:flex">
-                <Link to="/signin" className="px-4 py-1 bg-gray-900 text-md font-medium text-white rounded-full hover:bg-gray-600">Sign in</Link>
+                <Link to={routes.SIGNIN} className="px-4 py-1 bg-gray-900 text-md font-medium text-white rounded-full hover:bg-gray-600">Sign in</Link>
               </div>
             </>) : (<>
               <div className="hidden md:flex relative">
@@ -92,11 +93,11 @@ export default function Navbar() {
         {isOpen && (
           <div className="md:hidden bg-white shadow-md">
             <div className="px-4 pt-2 pb-3 space-y-2">
-              <Link to="/" className="block text-gray-700 hover:text-gray-900">Home</Link>
-              <Link to="/event" className="block text-gray-700 hover:text-gray-900">Events</Link>
-              <Link to="/about" className="block text-gray-700 hover:text-gray-900">About</Link>
+              <Link to={routes.HOME} className="block text-gray-700 hover:text-gray-900">Home</Link>
+              <Link to={routes.EVENT} className="block text-gray-700 hover:text-gray-900">Events</Link>
+              <Link to={routes.ABOUT} className="block text-gray-700 hover:text-gray-900">About</Link>
               {!user ? (<>
-                <Link to="/signin" className="block bg-gray-900 text-white text-center p-2 rounded-md hover:text-gray-800">Sign In</Link>
+                <Link to={routes.SIGNIN} className="block bg-gray-900 text-white text-center p-2 rounded-md hover:text-gray-800">Sign In</Link>
               </>) : (<>
                 <div onClick={logout} className="block bg-gray-900 text-white text-center p-2 rounded-md hover:text-gray-800">Log Out</div>
               </>)}
