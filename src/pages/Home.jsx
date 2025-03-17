@@ -1,8 +1,8 @@
 import React from 'react'
 import Hero from '../Components/Hero'
 import CommunionSec from '../Components/CommunionSec'
-import SectionOne from '../Components/sectionOne'
-import SectionTwo from '../Components/sectionTwo'
+import SectionOne from '../Components/SectionOne'
+import SectionTwo from '../Components/SectionTwo'
 
 export default function Home() {
   return (
