@@ -34,14 +34,14 @@ export default function Hero() {
           transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
         />
         <motion.img
-          src="https://images.pexels.com/photos/6238119/pexels-photo-6238119.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          src="https://images.pexels.com/photos/7551764/pexels-photo-7551764.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           alt="Discussion"
           className="w-70 h-44 rounded-xl shadow-lg absolute top-10 right-0"
           animate={{ y: [0, -10, 0] }}
           transition={{ repeat: Infinity, duration: 3, ease: "easeInOut", delay: 0.5 }}
         />
         <motion.img
-          src="https://images.pexels.com/photos/9816/pexels-photo-9816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          src="https://images.pexels.com/photos/109919/pexels-photo-109919.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           alt="Connection"
           className="w-100 h-52 rounded-xl shadow-lg absolute bottom-2 left-28"
           animate={{ y: [0, -10, 0] }}
