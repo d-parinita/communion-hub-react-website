@@ -27,10 +27,12 @@ export default function Navbar() {
 
   const userData = async () => {
     const response = await getUserData()
-    setUser({
-      email: response?.user?.email,
-      id: response?.user?.id
-    })
+    if(response?.user){
+      setUser({
+        email: response?.user?.email,
+        id: response?.user?.id
+      })
+    }
     if (response?.error) {
       toast.error('Error fetching user')
     }
